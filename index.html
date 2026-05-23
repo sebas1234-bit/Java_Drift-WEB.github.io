@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Drift® - Acelera tu Código</title>
+  <style>
+    :root {
+      --negro: #0A0A0A;
+      --azul-oscuro: #1A2333;
+      --dorado: #C9A04C;
+      --azul-neon: #4A9EFF;
+      --blanco: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: var(--negro);
+      color: var(--blanco);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: rgba(10, 10, 10, 0.95);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(201, 160, 76, 0.2);
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--dorado);
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A2333 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -150px;
+      width: 600px;
+      height: 300px;
+      background: url('https://via.placeholder.com/600x300/4A9EFF/0A0A0A?text=JD+CAR') no-repeat;
+      opacity: 0.15;
+      transform: rotate(-8deg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding-left: 8%;
+    }
+
+    .hero-logo h1 {
+      font-size: 4.5rem;
+      color: var(--dorado);
+      text-shadow: 0 0 30px rgba(201, 160, 76, 0.5);
+    }
+
+    .hero-logo .registered {
+      font-size: 0.4em;
+      vertical-align: super;
+    }
+
+    .slogan {
+      font-size: 1.8rem;
+      color: var(--azul-neon);
+      margin: 10px 0 15px;
+      font-weight: 700;
+    }
+
+    .stars {
+      font-size: 2.5rem;
+      color: var(--dorado);
+      margin-bottom: 30px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, var(--dorado), #E5B46A);
+      color: #0A0A0A;
+      padding: 18px 45px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.4s;
+      box-shadow: 0 10px 30px rgba(201, 160, 76, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(201, 160, 76, 0.4);
+    }
+
+    /* SECCIONES */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 60px;
+      color: var(--dorado);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(26, 35, 51, 0.6);
+      border: 1px solid rgba(201, 160, 76, 0.2);
+      border-radius: 16px;
+      padding: 40px 30px;
+      transition: all 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-15px);
+      border-color: var(--dorado);
+      box-shadow: 0 20px 40px rgba(201, 160, 76, 0.15);
+    }
+
+    .card h3 {
+      color: var(--azul-neon);
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+
+    /* ORIGEN */
+    .origen {
+      background: linear-gradient(135deg, #1A2333, #0A0A0A);
+    }
+
+    /* ROADMAP */
+    .roadmap {
+      background: var(--azul-oscuro);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .phase {
+      background: rgba(10, 10, 10, 0.8);
+      padding: 25px 35px;
+      border-radius: 12px;
+      border-left: 6px solid var(--dorado);
+    }
+
+    /* FOOTER / CONTACTO */
+    footer {
+      background: #0A0A0A;
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 15px;
+      background: #1A2333;
+      border: 1px solid #4A9EFF;
+      border-radius: 8px;
+      color: white;
+    }
+
+    button {
+      background: var(--dorado);
+      color: #0A0A0A;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <img src="https://via.placeholder.com/200x80/C9A04C/0A0A0A?text=JAVA+DRIFT" alt="Java Drift Logo">
+    </div>
+    <ul>
+      <li><a href="#juego">El Juego</a></li>
+      <li><a href="#origen">Origen</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-logo">
+        <h1>JAVA DRIFT<span class="registered">®</span></h1>
+        <p class="slogan">Acelera tu código.</p>
+        <div class="stars">★★★</div>
+      </div>
+      <h2 class="hero-title">ARCADE DE CARRERAS 2D<br>PURO Y DE ALTO RENDIMIENTO</h2>
+      <p class="hero-subtitle">Física de derrape extrema • IA inteligente • Optimizado desde cero en Java</p>
+      <a href="#juego" class="cta-button">CONOCER EL PROYECTO</a>
+    </div>
+  </header>
+
+  <!-- EL JUEGO -->
+  <section id="juego">
+    <div class="container">
+      <h2 class="section-title">EL JUEGO</h2>
+      <div class="features">
+        <div class="card">
+          <h3>01. Rendimiento Puro</h3>
+          <p>Renderizado 2D optimizado matemáticamente. Máxima fluidez y respuesta inmediata sin motores pesados.</p>
+        </div>
+        <div class="card">
+          <h3>02. IA Inteligente</h3>
+          <p>Rivales controlados por algoritmos de coordenadas y trazado dinámico. Competencia arcade auténtica.</p>
+        </div>
+        <div class="card">
+          <h3>03. Atmósfera Épica</h3>
+          <p>Físicas de derrape precisas combinadas con estética retro de los 90. Velocidad y control extremo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGEN -->
+  <section class="origen" id="origen">
+    <div class="container">
+      <h2 class="section-title">EL ORIGEN</h2>
+      <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.3rem; line-height: 1.8;">
+        Nuestra identidad nace donde se cruzan la rigurosidad de la ingeniería y la adrenalina del asfalto.<br><br>
+        <strong>"Java"</strong> representa los cimientos: robustez y arquitectura sólida.<br>
+        <strong>"Drift"</strong> evoca control extremo y cultura automovilística retro.<br><br>
+        Java Drift no es solo un nombre, es nuestra declaración de principios.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="equipo">
+    <div class="container">
+      <h2 class="section-title">QUIÉNES SOMOS</h2>
+      <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.25rem; line-height: 1.8;">
+        Detrás de Java Drift estamos <strong>Samuel Felipe Barbosa</strong> y <strong>Juan Sebastián Hernández</strong>, 
+        dos ingenieros de sistemas apasionados por romper los límites del desarrollo indie. 
+        Con dominio avanzado de Java, creamos experiencias mecánicamente perfectas.
+      </p>
+    </div>
+  </section>
+
+  <!-- MISIÓN Y VISIÓN -->
+  <section style="background: #111111;">
+    <div class="container">
+      <h2 class="section-title">MISIÓN Y VISIÓN</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1000px; margin: 0 auto;">
+        <div>
+          <h3 style="color: var(--dorado); margin-bottom: 15px;">MISIÓN</h3>
+          <p>Demostrar el verdadero poder y vigencia de Java en el desarrollo de videojuegos independientes, rescatando la jugabilidad pura de los arcades 2D de los 90.</p>
+        </div>
+        <div>
+          <h3 style="color: var(--dorado); margin-bottom: 15px;">VISIÓN</h3>
+          <p>Convertirnos en referencia internacional de juegos retro de alto rendimiento y expandirnos hacia multiplataforma (móvil y consolas).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="roadmap" id="roadmap">
+    <div class="container">
+      <h2 class="section-title">ROADMAP</h2>
+      <div class="timeline">
+        <div class="phase"><strong>Fase 1 (Actual)</strong> - Optimización Alpha: Pulir física y rendimiento.</div>
+        <div class="phase"><strong>Fase 2</strong> - Expansión de pistas y sistema de personalización.</div>
+        <div class="phase"><strong>Fase 3</strong> - Modo Multijugador en tiempo real.</div>
+        <div class="phase"><strong>Fase 4</strong> - Portabilidad multiplataforma (móvil y consolas).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <footer id="contacto">
+    <div class="container">
+      <h2 class="section-title">¿Quieres unirte a la carrera?</h2>
+      <p style="margin-bottom: 40px;">Escríbenos si eres desarrollador, apasionado de los motores o quieres colaborar.</p>
+      
+      <form style="max-width: 500px; margin: 0 auto;">
+        <div class="form-group">
+          <input type="text" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <textarea rows="5" placeholder="Mensaje..."></textarea>
+        </div>
+        <button type="submit">ENVIAR MENSAJE</button>
+      </form>
+
+      <p style="margin-top: 60px; opacity: 0.6;">© 2026 Java Drift® - Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+</body>
+</html>
