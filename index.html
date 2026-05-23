@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Drift® - Acelera tu Código</title>
+  
+  <!-- FAVICON (Isotipo) - Cambia la URL cuando lo subas -->
+  <link rel="icon" href="https://raw.githubusercontent.com/sebas1234-bit/Java_Drift-WEB.github.io/main/assets/isotipo-jd.png" type="image/png">
+  
+  <style>
+    :root {
+      --negro: #0A0A0A;
+      --azul-oscuro: #1A2333;
+      --dorado: #C9A04C;
+      --azul-neon: #4A9EFF;
+      --blanco: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: var(--negro);
+      color: var(--blanco);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 900; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* NAVEGACIÓN MEJORADA */
+    nav {
+      display: flex;
+      justify-content: flex-end;     /* Movido a la derecha */
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(10, 10, 10, 0.95);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(74, 158, 255, 0.2);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 8px 0;
+    }
+
+    /* Animación de hover */
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--azul-neon);
+      transition: width 0.4s ease;
+    }
+
+    nav a:hover {
+      color: var(--azul-neon);
+      transform: translateY(-3px);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A2333 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding-left: 8%;
+    }
+
+    .hero-logo h1 {
+      font-size: 5rem;
+      color: var(--dorado);
+      text-shadow: 0 0 40px rgba(201, 160, 76, 0.6);
+      margin-bottom: 10px;
+    }
+
+    .registered { font-size: 0.35em; vertical-align: super; }
+
+    .slogan {
+      font-size: 2rem;
+      color: var(--azul-neon);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .stars { font-size: 3rem; color: var(--dorado); margin-bottom: 30px; }
+
+    .hero-title { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
+    .hero-subtitle { font-size: 1.4rem; margin-bottom: 45px; opacity: 0.9; }
+
+    .cta-button {
+      background: linear-gradient(45deg, var(--dorado), #E5B46A);
+      color: #0A0A0A;
+      padding: 18px 55px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.4s;
+      box-shadow: 0 10px 30px rgba(201, 160, 76, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-8px) scale(1.08);
+      box-shadow: 0 20px 50px rgba(201, 160, 76, 0.5);
+    }
+
+    section { padding: 110px 0; }
+    .section-title {
+      text-align: center;
+      font-size: 3.2rem;
+      margin-bottom: 70px;
+      color: var(--dorado);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 35px;
+    }
+
+    .card {
+      background: rgba(26, 35, 51, 0.7);
+      border: 1px solid rgba(201, 160, 76, 0.2);
+      border-radius: 16px;
+      padding: 45px 35px;
+      transition: all 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-20px);
+      border-color: var(--azul-neon);
+      box-shadow: 0 25px 50px rgba(74, 158, 255, 0.15);
+    }
+
+    .card h3 { color: var(--azul-neon); margin-bottom: 20px; font-size: 1.7rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <ul>
+      <li><a href="#juego">El Juego</a></li>
+      <li><a href="#origen">Origen</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-logo">
+        <h1>JAVA DRIFT<span class="registered">®</span></h1>
+        <p class="slogan">Acelera tu código.</p>
+        <div class="stars">★★★</div>
+      </div>
+      <h2 class="hero-title">ARCADE DE CARRERAS 2D<br>PURO Y DE ALTO RENDIMIENTO</h2>
+      <p class="hero-subtitle">Física de derrape extrema • IA inteligente • Optimizado desde cero en Java</p>
+      <a href="#juego" class="cta-button">CONOCER EL PROYECTO</a>
+    </div>
+  </header>
+
+  <!-- EL JUEGO -->
+  <section id="juego">
+    <div class="container">
+      <h2 class="section-title">EL JUEGO</h2>
+      <div class="features">
+        <div class="card">
+          <h3>01. Rendimiento Puro</h3>
+          <p>Renderizado 2D optimizado matemáticamente. Máxima fluidez y respuesta inmediata sin motores pesados.</p>
+        </div>
+        <div class="card">
+          <h3>02. IA Inteligente</h3>
+          <p>Rivales controlados por algoritmos de coordenadas y trazado dinámico. Competencia arcade auténtica.</p>
+        </div>
+        <div class="card">
+          <h3>03. Atmósfera Épica</h3>
+          <p>Físicas de derrape precisas combinadas con estética retro de los 90.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGEN -->
+  <section id="origen" style="background: linear-gradient(135deg, #1A2333, #0A0A0A);">
+    <div class="container">
+      <h2 class="section-title">EL ORIGEN</h2>
+      <p style="max-width: 850px; margin: 0 auto; text-align: center; font-size: 1.35rem; line-height: 1.9;">
+        Nuestra identidad nace donde se cruzan la rigurosidad de la ingeniería y la adrenalina del asfalto.<br><br>
+        <strong>"Java"</strong> representa los cimientos sólidos.<br>
+        <strong>"Drift"</strong> evoca el control extremo y la velocidad.<br><br>
+        Java Drift es nuestra declaración de principios.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="equipo">
+    <div class="container">
+      <h2 class="section-title">QUIÉNES SOMOS</h2>
+      <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.3rem; line-height: 1.9;">
+        Detrás de Java Drift estamos <strong>Samuel Felipe Barbosa</strong> y <strong>Juan Sebastián Hernández</strong>, 
+        dos ingenieros de sistemas apasionados por crear videojuegos independientes de alto rendimiento.
+      </p>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" style="background: #111827;">
+    <div class="container">
+      <h2 class="section-title">ROADMAP</h2>
+      <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 25px;">
+        <div style="background: rgba(26,35,51,0.8); padding: 25px 35px; border-radius: 12px; border-left: 5px solid var(--dorado);">
+          <strong>Fase 1 (Actual)</strong> — Optimización Alpha
+        </div>
+        <div style="background: rgba(26,35,51,0.8); padding: 25px 35px; border-radius: 12px; border-left: 5px solid var(--dorado);">
+          <strong>Fase 2</strong> — Expansión de pistas y personalización
+        </div>
+        <div style="background: rgba(26,35,51,0.8); padding: 25px 35px; border-radius: 12px; border-left: 5px solid var(--dorado);">
+          <strong>Fase 3</strong> — Modo Multijugador
+        </div>
+        <div style="background: rgba(26,35,51,0.8); padding: 25px 35px; border-radius: 12px; border-left: 5px solid var(--dorado);">
+          <strong>Fase 4</strong> — Portabilidad a móvil y consolas
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <footer id="contacto">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title">¿Quieres unirte a la carrera?</h2>
+      <p style="margin-bottom: 40px; font-size: 1.2rem;">Escríbenos si eres desarrollador o quieres colaborar.</p>
+      
+      <form style="max-width: 520px; margin: 0 auto;">
+        <input type="text" placeholder="Tu nombre" style="width:100%; padding:16px; margin:10px 0; background:#1A2333; border:1px solid #4A9EFF; color:white; border-radius:8px;"><br>
+        <input type="email" placeholder="Correo electrónico" style="width:100%; padding:16px; margin:10px 0; background:#1A2333; border:1px solid #4A9EFF; color:white; border-radius:8px;"><br>
+        <textarea placeholder="Mensaje..." rows="5" style="width:100%; padding:16px; margin:10px 0; background:#1A2333; border:1px solid #4A9EFF; color:white; border-radius:8px;"></textarea><br>
+        <button type="submit" style="padding:16px 50px; background:var(--dorado); color:black; border:none; border-radius:50px; font-weight:bold; font-size:1.1rem;">ENVIAR MENSAJE</button>
+      </form>
+      <p style="margin-top: 70px; opacity: 0.6;">© 2026 Java Drift® - Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+</body>
+</html>
